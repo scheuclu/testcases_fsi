@@ -1,0 +1,104 @@
+under Problem {
+  Type   = UnsteadyAeroelastic;
+  Mode   = Dimensional;
+  Prec   = NonPreconditioned;
+  Framework = BodyFitted;
+}
+
+under Input {
+  Prefix = "./";
+  GeometryPrefix = "./mesh/matcher/MATCHEROUTPUT";
+  Matcher = "./mesh/matcher/MATCHEROUTPUT.match.fluid";
+  EmbeddedSurface = "./mesh/runmesh/fluidstructure_interface.top";
+}
+
+under Output {
+  under Postpro {
+    Prefix   = "results/";
+    Pressure = "Pressure.bin";
+    Mach     = "Mach.bin";
+    Velocity = "Velocity.bin";
+    LiftandDrag = "LiftandDrag.out";
+    Frequency = 5000;
+  }
+  under Restart {
+    Frequency = 10000;
+    Prefix   = "references/";
+  }
+}
+
+under Equations {
+  Type = Euler;
+  under FluidModel[0] {
+    Fluid = PerfectGas;
+    PressureCutOff = 10.0;
+    DensityCutOff  = 0.001;
+    under GasModel {
+      SpecificHeatRatio = 1.4;
+      PressureConstant  = 0.0;
+    }
+  }
+}
+
+under ReferenceState {
+  Length = 1.0;
+  Mach = 2.0;
+  Reynolds = 1.0e7;
+  Temperature = 273.15;
+}
+
+under Surfaces {
+  under SurfaceData[8] {
+    BoundaryConditionID = 0;
+  }
+}
+
+under BoundaryConditions {
+  under Inlet {
+    Type    = External;
+    Mach    = 2.0;
+    Density = 1.225;
+    Pressure = 1.0e4;
+    Alpha   = 0.0;
+    Beta    = 90.0;
+  }
+}
+
+under Space {
+  under NavierStokes {
+    Flux              = Roe;
+    Reconstruction    = Linear;
+    AdvectiveOperator = FiniteVolume;
+    Limiter           = VanAlbada;
+    Gradient          = LeastSquares;
+    Beta              = 0.66666666667;
+    Gamma             = 1.0;
+  }
+  under Boundaries {
+    Type = StegerWarming;
+  }
+}
+
+under Time {
+  Type   = Explicit;
+  MaxIts = 70000000; 
+  CheckSolution = Off;
+  CheckPressure = Off;
+  CheckDensity = Off;
+  under CflLaw {
+    //NOTE: if the structure timestep is smaller than the fluid then the fluid uses the same as the structure
+    //      if the structure timestep is larger than the fluid then the fluid does subcycling
+    Cfl0 = 0.3;
+    CflMax = 0.3;
+  }
+  under Explicit {
+    Type = RungeKutta2;
+  }
+}
+
+/*under EmbeddedFramework {*/
+  /*Intersector = PhysBAM;*/
+  /*SurrogateSurface = EmbeddedSurface;*/
+  /*RiemannNormal = Fluid;*/
+/*}*/
+

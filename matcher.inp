@@ -1,0 +1,2 @@
+INCLUDE "./mesh/runmesh/structure_volume.aerosmsh"
+END

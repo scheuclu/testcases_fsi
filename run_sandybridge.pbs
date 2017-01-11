@@ -1,0 +1,49 @@
+#!/bin/bash
+
+#PBS -N Case14
+
+#PBS -e Case14.err
+
+#PBS -o Case14.out
+
+#PBS -m e
+
+#PBS -M pavery@stanford.edu
+
+#PBS -l nodes=8:ppn=16
+
+#PBS -l walltime=48:00:00
+
+#PBS -q sandybridge
+
+AEROS_EXECUTABLE=/home/pavery/bin/aeros
+AEROF_EXECUTABLE=/home/pavery/bin/aerof.opt
+SOWER_EXECUTABLE=/home/pavery/bin/sower
+
+module load intel/intel-13 openmpi/openmpi161_intel13
+
+PBS_O_WORKDIR='/home/pavery/JPL/ShortCourseFSI-Sep2016/HandsOnSessions/FolderCases14To15/simulations/Case14'
+export PBS_O_WORKDIR
+
+### ---------------------------------------
+### BEGINNING OF EXECUTION
+### ---------------------------------------
+
+echo The master node of this job is `hostname`
+echo The working directory is `echo $PBS_O_WORKDIR`
+echo This job runs on the following nodes:
+echo `cat $PBS_NODEFILE`
+
+cd $PBS_O_WORKDIR
+
+# Run coupled fluid-structure interaction simulation
+cmd="mpirun -np 120 $AEROF_EXECUTABLE FluidFile : -np 1 $AEROS_EXECUTABLE StructureFile"
+
+$cmd >& $PBS_O_WORKDIR/log.out
+
+# Postprocess fluid solution
+$SOWER_EXECUTABLE -fluid -merge -con ../../data/OUTPUT.con -mesh ../../data/OUTPUT.msh -result results/Pressure.bin -output postpro/Pressure
+$SOWER_EXECUTABLE -fluid -merge -con ../../data/OUTPUT.con -mesh ../../data/OUTPUT.msh -result results/Mach.bin -output postpro/Mach
+$SOWER_EXECUTABLE -fluid -merge -con ../../data/OUTPUT.con -mesh ../../data/OUTPUT.msh -result results/Velocity.bin -output postpro/Velocity
+
+sleep 60
