@@ -6,9 +6,7 @@ This folder contains all test-cases for the Aeroelastic Sensitivity Analysis fra
 
 ##General
 
-A variety od parameter cobinations has to be tested in order to ensure full fuynctionality of the SA framework.
-All calculations evaluate the Sensitivity of the Lift and Drag(LD) with respect to the parameters lsuited below.
-
+A variety of parameter combinations has to be tested in order to ensure full functionality of the SA framework.
 We test the follwowing features:
 
 - Equation type
@@ -27,8 +25,14 @@ We test the follwowing features:
   - AoA sensitivity
 
 ##Setup
-All calculations are performed on a NACA0012 airfoil mesh as depicted below.
-![NACA0012](doc/mesh.png)
+All calculations are performed on a 4-digit NACA airfoil. The user is not restricted to a specific profile. The mesh generatiopn is fully scripted, and the mesh used can be easily changes by running just a few script:
+
+### ./mesh/NACA_fourdigit_curvegen.m
+creates the .csv-file "./mesh/nacanodes.txt" that contains the profile coorinates of the specified NACA profile.
+### ./mesh/genmeshes.py
+creates all relevant mesh files for the simulation based on the "./mesh/nacanodes.txt" file.
+### ./preprocess.sh
+calls Matcher and Sower on the mesh files and stores the results into "./mesh/matcher" and "./mesh/sower"
 
 ##Structure
 This folder first splits into 3 subfolders that cover the different Sensitivity types
