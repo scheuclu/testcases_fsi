@@ -1,5 +1,5 @@
 under Problem {
-  Type   = UnsteadyAeroelastic;
+  Type   = SteadyAeroelastic;
   Mode   = Dimensional;
   Prec   = NonPreconditioned;
   Framework = BodyFitted;
@@ -7,7 +7,7 @@ under Problem {
 
 under Input {
   Prefix = "./";
-  GeometryPrefix = "./mesh/matcher/MATCHEROUTPUT";
+  GeometryPrefix = "./mesh/sower/fluid_sowered";
   Matcher = "./mesh/matcher/MATCHEROUTPUT.match.fluid";
   EmbeddedSurface = "./mesh/runmesh/fluidstructure_interface.top";
 }
@@ -95,6 +95,25 @@ under Time {
     Type = RungeKutta2;
   }
 }
+
+under MeshMotion {
+  Type = Basic;
+  Element = BallVertexSprings;
+  Mode = NonRecursive;
+  NumIncrements = 1;
+  under Newton {
+    MaxIts = 1;
+    Eps = 0.01;
+    under LinearSolver {
+      Type = Cg;
+      MaxIts = 5000;
+      KrylovVectors = 100;
+      Eps = 1e-12;
+      under Preconditioner { Type = Jacobi; }
+    }
+  }
+}
+
 
 /*under EmbeddedFramework {*/
   /*Intersector = PhysBAM;*/

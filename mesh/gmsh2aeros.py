@@ -62,12 +62,12 @@ with open(outfile,'w') as f:
     f.write("1 0 608000000.000000 0.400000 1153.400000 0 0 0.000076 0 0 0 0 0 0 0\n")
     print("\033[93mMATERIAL written\033[00m")
 
-    f.write("*\nMATUSAGE\n")
-    f.write("1 "+str(len(elearray_out))+" 1\n")
-    print("\033[93mMATUSAGE written\033[00m")
+    # f.write("*\nMATUSAGE\n")
+    # f.write("1 "+str(len(elearray_out))+" 1\n")
+    # print("\033[93mMATUSAGE written\033[00m")
 
-    f.write("*\nMATLAW\n")
-    f.write("1 HyperElasticPlaneStress 1153.400000 608000000.000000 0.400000 0.000076\n")
-    print("\033[93mMATLAW written\033[00m")
+    # f.write("*\nMATLAW\n")
+    # f.write("1 HyperElasticPlaneStress 1153.400000 608000000.000000 0.400000 0.000076\n")
+    # print("\033[93mMATLAW written\033[00m")
 
 print("\033[92mAERO-S mesh file created: \033[00m"+outfile+"\n")
