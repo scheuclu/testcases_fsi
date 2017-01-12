@@ -1,3 +1,10 @@
+problem
+results
+postpro/*.xpost
+visualization/.exo
+*.err
+*.out
+*.xpost
 *DEFAULT*
 *.pres*
 *.vmo*

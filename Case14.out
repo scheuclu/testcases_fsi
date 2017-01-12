@@ -3,65 +3,34 @@ The working directory is /home/lscheuch/project/testcases_fsi
 This job runs on the following nodes:
 compute-1-31 compute-1-31 compute-1-31 compute-1-31 compute-1-31 compute-1-31 compute-1-31 compute-1-31 compute-1-31 compute-1-31 compute-1-31 compute-1-31 compute-1-31 compute-1-31 compute-1-31 compute-1-31 compute-1-30 compute-1-30 compute-1-30 compute-1-30 compute-1-30 compute-1-30 compute-1-30 compute-1-30 compute-1-30 compute-1-30 compute-1-30 compute-1-30 compute-1-30 compute-1-30 compute-1-30 compute-1-30 compute-1-29 compute-1-29 compute-1-29 compute-1-29 compute-1-29 compute-1-29 compute-1-29 compute-1-29 compute-1-29 compute-1-29 compute-1-29 compute-1-29 compute-1-29 compute-1-29 compute-1-29 compute-1-29 compute-1-28 compute-1-28 compute-1-28 compute-1-28 compute-1-28 compute-1-28 compute-1-28 compute-1-28 compute-1-28 compute-1-28 compute-1-28 compute-1-28 compute-1-28 compute-1-28 compute-1-28 compute-1-28 compute-1-27 compute-1-27 compute-1-27 compute-1-27 compute-1-27 compute-1-27 compute-1-27 compute-1-27 compute-1-27 compute-1-27 compute-1-27 compute-1-27 compute-1-27 compute-1-27 compute-1-27 compute-1-27 compute-1-26 compute-1-26 compute-1-26 compute-1-26 compute-1-26 compute-1-26 compute-1-26 compute-1-26 compute-1-26 compute-1-26 compute-1-26 compute-1-26 compute-1-26 compute-1-26 compute-1-26 compute-1-26 compute-1-25 compute-1-25 compute-1-25 compute-1-25 compute-1-25 compute-1-25 compute-1-25 compute-1-25 compute-1-25 compute-1-25 compute-1-25 compute-1-25 compute-1-25 compute-1-25 compute-1-25 compute-1-25 compute-1-24 compute-1-24 compute-1-24 compute-1-24 compute-1-24 compute-1-24 compute-1-24 compute-1-24 compute-1-24 compute-1-24 compute-1-24 compute-1-24 compute-1-24 compute-1-24 compute-1-24 compute-1-24
  ... Reading nodes from cluster 1
- ... Number of nodes (including overlap) = 1004
- ... Number of nodes = 1004
- ... Number of input result(s) = 15
- ... Number of output result(s) = 15
+ ... Number of nodes (including overlap) = 2478
+ ... Number of nodes = 2478
+ ... Number of input result(s) = 2
+ ... Number of output result(s) = 2
  ... Processing result 1 with tag 0    
- ... Processing result 2 with tag 0.00049995    
- ... Processing result 3 with tag 0.00099995    
- ... Processing result 4 with tag 0.00149995    
- ... Processing result 5 with tag 0.00199995    
- ... Processing result 6 with tag 0.00249995    
- ... Processing result 7 with tag 0.00299995    
- ... Processing result 8 with tag 0.00349995    
- ... Processing result 9 with tag 0.00399995    
- ... Processing result 10 with tag 0.00449995    
- ... Processing result 11 with tag 0.00499995    
- ... Processing result 12 with tag 0.00549995    
- ... Processing result 13 with tag 0.00599995    
- ... Processing result 14 with tag 0.00649995    
- ... Processing result 15 with tag 0.00699995    
+ ... Processing result 2 with tag 0.00159997    
 
  ... Reading nodes from cluster 1
- ... Number of nodes (including overlap) = 1004
- ... Number of nodes = 1004
- ... Number of input result(s) = 15
- ... Number of output result(s) = 15
+ ... Number of nodes (including overlap) = 2478
+ ... Number of nodes = 2478
+ ... Number of input result(s) = 2
+ ... Number of output result(s) = 2
  ... Processing result 1 with tag 0    
- ... Processing result 2 with tag 0.00049995    
- ... Processing result 3 with tag 0.00099995    
- ... Processing result 4 with tag 0.00149995    
- ... Processing result 5 with tag 0.00199995    
- ... Processing result 6 with tag 0.00249995    
- ... Processing result 7 with tag 0.00299995    
- ... Processing result 8 with tag 0.00349995    
- ... Processing result 9 with tag 0.00399995    
- ... Processing result 10 with tag 0.00449995    
- ... Processing result 11 with tag 0.00499995    
- ... Processing result 12 with tag 0.00549995    
- ... Processing result 13 with tag 0.00599995    
- ... Processing result 14 with tag 0.00649995    
- ... Processing result 15 with tag 0.00699995    
+ ... Processing result 2 with tag 0.00159997    
 
  ... Reading nodes from cluster 1
- ... Number of nodes (including overlap) = 1004
- ... Number of nodes = 1004
- ... Number of input result(s) = 15
- ... Number of output result(s) = 15
+ ... Number of nodes (including overlap) = 2478
+ ... Number of nodes = 2478
+ ... Number of input result(s) = 2
+ ... Number of output result(s) = 2
  ... Processing result 1 with tag 0    
- ... Processing result 2 with tag 0.00049995    
- ... Processing result 3 with tag 0.00099995    
- ... Processing result 4 with tag 0.00149995    
- ... Processing result 5 with tag 0.00199995    
- ... Processing result 6 with tag 0.00249995    
- ... Processing result 7 with tag 0.00299995    
- ... Processing result 8 with tag 0.00349995    
- ... Processing result 9 with tag 0.00399995    
- ... Processing result 10 with tag 0.00449995    
- ... Processing result 11 with tag 0.00499995    
- ... Processing result 12 with tag 0.00549995    
- ... Processing result 13 with tag 0.00599995    
- ... Processing result 14 with tag 0.00649995    
- ... Processing result 15 with tag 0.00699995    
+ ... Processing result 2 with tag 0.00159997    
+
+ ... Reading nodes from cluster 1
+ ... Number of nodes (including overlap) = 2478
+ ... Number of nodes = 2478
+ ... Number of input result(s) = 2
+ ... Number of output result(s) = 2
+ ... Processing result 1 with tag 0    
+ ... Processing result 2 with tag 0.00159997    
 

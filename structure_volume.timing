@@ -3,13 +3,13 @@
  ... Linear Dynamic Problem Information ... 
 *******************************************************************************
 
-1. Number of Nodes                         =             62
+1. Number of Nodes                         =            676
 
-2. Number of Elements                      =            162
+2. Number of Elements                      =           1902
 
-3. Number of Degrees of Freedom            =            186
+3. Number of Degrees of Freedom            =           2028
          Number of Constrained Dofs        =              0
-         Number of Unconstrained Dofs      =            186
+         Number of Unconstrained Dofs      =           2028
 
 4. Number of Applied Loads                 =              0
 
@@ -27,36 +27,36 @@
  ... Timing Statistics for 1 Thread  ...
 *******************************************************************************
 
-1. Total Read Input Files              time:        0.00207 s          0.038 Mb
-         Read Mesh                     time:        0.00207 s
+1. Total Read Input Files              time:        0.00671 s          0.442 Mb
+         Read Mesh                     time:        0.00671 s
 
-2. Total Preprocessing                 time:        0.00024 s          0.021 Mb
-         Process Input Data            time:        0.00012 s
-         Connectivity                  time:        0.00001 s
-         Renumbering                   time:        0.00005 s
-         Create DOFs                   time:        0.00001 s
-         Make Constrained DOFs         time:        0.00004 s
-         Make Boundary Conditions      time:        0.00001 s
+2. Total Preprocessing                 time:        0.00184 s          0.386 Mb
+         Process Input Data            time:        0.00083 s
+         Connectivity                  time:        0.00007 s
+         Renumbering                   time:        0.00035 s
+         Create DOFs                   time:        0.00005 s
+         Make Constrained DOFs         time:        0.00047 s
+         Make Boundary Conditions      time:        0.00003 s
 
-3. Total Matrix Processing             time:        0.00099 s          0.031 Mb
-         Construct Sparse Matrices     time:        0.00008 s
-         Form Element Matrices         time:        0.00058 s
-         Assemble Element Matrices     time:        0.00034 s
+3. Total Matrix Processing             time:        0.01284 s          0.031 Mb
+         Construct Sparse Matrices     time:        0.00152 s
+         Form Element Matrices         time:        0.00702 s
+         Assemble Element Matrices     time:        0.00429 s
 
-4. Total RHS Processing                time:        0.89058 s          0.000 Mb
+4. Total RHS Processing                time:        0.60367 s          0.000 Mb
 
-5. Total Solver                        time:        0.10385 s          0.032 Mb
-         Update States                 time:        0.10385 s
+5. Total Solver                        time:        0.05661 s          0.046 Mb
+         Update States                 time:        0.05661 s
 
-6. Write Output Files                  time:        0.23314 s       68.427 Mb
+6. Write Output Files                  time:        0.01490 s       55.706 Mb
 
-7. Fluid Communication                 time:      223.50372 s
-   Receive From Fluid                  time:      222.88597 s
-   Send To Fluid                       time:        0.61774 s
+7. Fluid Communication                 time:      111.42449 s
+   Receive From Fluid                  time:      111.25448 s
+   Send To Fluid                       time:        0.17001 s
 
 
-TOTAL SIMULATION 1 (1+2+3+4+5+6)       time:        1.23087 s         68.550 Mb
+TOTAL SIMULATION 1 (1+2+3+4+5+6)       time:        0.69657 s         56.611 Mb
 
-TOTAL SIMULATION 2 (1+2+3+4+5+6+7)     time:      224.73459 s
+TOTAL SIMULATION 2 (1+2+3+4+5+6+7)     time:      112.12106 s
 
 *******************************************************************************

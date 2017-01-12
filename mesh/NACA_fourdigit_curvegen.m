@@ -29,7 +29,7 @@ d4=2;
 c=1.0;
 
 %total number of points along the top and bottom
-numpoints=10;
+numpoints=60;
 
 %% Profile generations
 
@@ -125,14 +125,15 @@ end
 
 
 
-xl=x(2:end-1);
-yl=yl(2:end-1);
-zl=z(2:end-1);
+xl=x(2:end);
+yl=yl(2:end);
+zl=z(2:end);
  
 points=[...
     xu'          yu'          z'
+    1            0            z(end) %making the profile indefinitly sharp
     flipud(xl') flipud(yl')  zl'];
 
 %% Output
 
-csvwrite('./nacanodes.txt',points);
+csvwrite('./meshgen/nacanodes.txt',points);

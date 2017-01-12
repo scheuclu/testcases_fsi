@@ -1,14 +1,12 @@
 #!/bin/bash
 
-#PBS -N Case14
+#PBS -N fsi_testcase
 
-#PBS -e Case14.err
+#PBS -e fsi_testcase.err
 
-#PBS -o Case14.out
+#PBS -o fsi_testcase.out
 
 #PBS -m e
-
-#PBS -M pavery@stanford.edu
 
 #PBS -l nodes=8:ppn=16
 
@@ -36,15 +34,18 @@ echo `cat $PBS_NODEFILE`
 
 cd $PBS_O_WORKDIR
 
+rm results/*
+
 # Run coupled fluid-structure interaction simulation
 cmd="mpirun -np 12 $AEROF_EXECUTABLE fluidfile.inp : -np 1 $AEROS_EXECUTABLE structurefile.inp"
 
 $cmd >& $PBS_O_WORKDIR/log.out
 
 # Postprocess fluid solution
-$SOWER_EXECUTABLE -fluid -merge -con ./mesh/sower/fluid_sowered.con -mesh ./mesh/sowered/fluid_sowered.msh -result results/Pressure.bin -output postpro/Pressure
-$SOWER_EXECUTABLE -fluid -merge -con ./mesh/sower/fluid_sowered.con -mesh ./mesh/sower/fluid_sowered.msh -result results/Mach.bin -output postpro/Mach
-$SOWER_EXECUTABLE -fluid -merge -con ./mesh/sower/fluid_sowered.con -mesh ./mesh/sower/fluid_sowered.msh -result results/Velocity.bin -output postpro/Velocity
-$SOWER_EXECUTABLE -fluid -merge -con ./mesh/sower/fluid_sowered.con -mesh ./mesh/sower/fluid_sowered.msh -result results/Displacement.bin -output postpro/Displacement
+./sowerresults.sh
+#$SOWER_EXECUTABLE -fluid -merge -con ./mesh/sower/fluid_sowered.con -mesh ./mesh/sower/fluid_sowered.msh -result results/Pressure.bin -output postpro/Pressure
+#$SOWER_EXECUTABLE -fluid -merge -con ./mesh/sower/fluid_sowered.con -mesh ./mesh/sower/fluid_sowered.msh -result results/Mach.bin -output postpro/Mach
+#$SOWER_EXECUTABLE -fluid -merge -con ./mesh/sower/fluid_sowered.con -mesh ./mesh/sower/fluid_sowered.msh -result results/Velocity.bin -output postpro/Velocity
+#$SOWER_EXECUTABLE -fluid -merge -con ./mesh/sower/fluid_sowered.con -mesh ./mesh/sower/fluid_sowered.msh -result results/Displacement.bin -output postpro/Displacement
 
 sleep 60

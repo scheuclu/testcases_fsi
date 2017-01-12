@@ -49,6 +49,8 @@ clear
 #create interface mesh as .topfile
 gmsh ./meshgen/fluid_volume.geo -3 -o ./premsh/fluid_volume.msh
 ./gmsh2top ./premsh/fluid_volume
+#SymmetrySurface needs a tag to label it a Sliding Surface
+sed -i -- 's/SymmetrySurface/SymmetrySurface_8/g' ./premsh/fluid_volume.top
 mv ./premsh/fluid_volume.top ./runmesh/fluid_volume.top
 printSuccess "fluid_volume mesh created"
 sleep 2s

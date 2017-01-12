@@ -10,10 +10,10 @@ linelist+={<numnodes>};
 
 
 Point(1000) = {0.0, 0.0, 0.0, <msizefarfield>};
-Point(1001) = {0.0,-5.0, 0.0, <msizefarfield>};
-Point(1002) = {-5.0, 0.0, 0.0, <msizefarfield>};
-Point(1003) = {0.0, 5.0, 0.0, <msizefarfield>};
-Point(1004) = {5.0, 0.0, 0.0, <msizefarfield>};
+Point(1001) = {0.0,-<size_farfield>, 0.0, <msizefarfield>};
+Point(1002) = {-<size_farfield>, 0.0, 0.0, <msizefarfield>};
+Point(1003) = {0.0, <size_farfield>, 0.0, <msizefarfield>};
+Point(1004) = {<size_farfield>, 0.0, 0.0, <msizefarfield>};
 
 Circle(2001) = {1001,1000,1002};
 Circle(2002) = {1002,1000,1003};
@@ -32,7 +32,7 @@ surfaceextrude[]=Extrude {0, 0, <thickness>} {
 
 Physical Volume("FluidMesh")={surfaceextrude[1]};
 Physical Surface("InletFixedSurface")={surfaceextrude[2],surfaceextrude[3],surfaceextrude[4],surfaceextrude[5]};
-Physical Surface("SymmetrySurface")={3001,surfaceextrude[0]};
+Physical Surface("SymmetrySurface",9)={3001,surfaceextrude[0]};
 
 slipmovingsurfacelist={};
 For j In {1:<numnodes>}
