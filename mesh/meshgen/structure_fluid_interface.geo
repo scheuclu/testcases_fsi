@@ -44,7 +44,7 @@ ext={};
 For j In {1 : 18-1}
   Line(j*10) = {j, j+1};
   ext[]=Extrude {0, 0, -2.0} {
-  Line{j*10};
+  Line{j*10};Layers{1};
   };
   slipsurfacelist+={ext[1]};
 EndFor
@@ -52,7 +52,7 @@ EndFor
 //Final closing line
 Line(18*10)={18,1};
 ext[]=Extrude {0, 0, -2.0} {
-Line{18*10};
+Line{18*10};Layers{1};
 };
 slipsurfacelist+={ext[1]};
 

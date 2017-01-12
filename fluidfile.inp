@@ -1,5 +1,5 @@
 under Problem {
-  Type   = SteadyAeroelastic;
+  Type   = UnsteadyAeroelastic;
   Mode   = Dimensional;
   Prec   = NonPreconditioned;
   Framework = BodyFitted;
@@ -8,8 +8,8 @@ under Problem {
 under Input {
   Prefix = "./";
   GeometryPrefix = "./mesh/sower/fluid_sowered";
-  Matcher = "./mesh/matcher/MATCHEROUTPUT.match.fluid";
-  EmbeddedSurface = "./mesh/runmesh/fluidstructure_interface.top";
+  Matcher = "./mesh/sower/fluid_sowered.match";
+  //EmbeddedSurface = "./mesh/runmesh/fluidstructure_interface.top";
 }
 
 under Output {
@@ -42,7 +42,7 @@ under Equations {
 
 under ReferenceState {
   Length = 1.0;
-  Mach = 2.0;
+  Mach = 0.2;
   Reynolds = 1.0e7;
   Temperature = 273.15;
 }
@@ -67,7 +67,7 @@ under BoundaryConditions {
 under Space {
   under NavierStokes {
     Flux              = Roe;
-    Reconstruction    = Linear;
+    Reconstruction    = Constant;//Linear
     AdvectiveOperator = FiniteVolume;
     Limiter           = VanAlbada;
     Gradient          = LeastSquares;

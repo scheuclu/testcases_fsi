@@ -26,7 +26,7 @@ ext={};
 For j In {1 : <numnodes>-1}
   Line(j*10) = {j, j+1};
   ext[]=Extrude {0, 0, <thickness>} {
-  Line{j*10};
+  Line{j*10};Layers{1};
   };
   slipsurfacelist+={ext[1]};
 EndFor
@@ -34,7 +34,7 @@ EndFor
 //Final closing line
 Line(<numnodes>*10)={<numnodes>,1};
 ext[]=Extrude {0, 0, <thickness>} {
-Line{<numnodes>*10};
+Line{<numnodes>*10};Layers{1};
 };
 slipsurfacelist+={ext[1]};
 

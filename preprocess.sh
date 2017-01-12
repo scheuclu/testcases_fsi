@@ -21,7 +21,7 @@ $PARTNMESH_EXECUTABLE ./mesh/runmesh/fluid_volume.top 12
 printSuccess "Fluid mesh decomposed"
 
 # Run Matcher
-$MATCHER_EXECUTABLE ./mesh/premsh/structure_fluid_interface.top ./matcher.inp -output ./mesh/matcher/MATCHEROUTPUT
+$MATCHER_EXECUTABLE ./mesh/runmesh/fluid_volume.top ./matcher.inp -output ./mesh/matcher/MATCHEROUTPUT
 printSuccess "Matcher completed"
 
 # Run Sower to pre-process the fluid mesh

@@ -18,6 +18,7 @@ print("\033[92mSyntax valid\033[00m")
 mshfile=sys.argv[1]
 outfile=sys.argv[2]
 
+
 with open(mshfile) as f:
     t=f.read()
 
@@ -30,21 +31,31 @@ print("\033[93m"+str(len(nodearray))+" nodes created\033[00m")
 elearray=t[t.find('Elements')+9:t.find('EndElements')-1].splitlines()[1:]
 eleindex=1
 elearray_out=[]
+indices_tet=[]
+indices_tri=[]
 for i in range(0,len(elearray)):
     elementtype=int(elearray[i].split(' ')[1])
-    if elementtype==4:
+    if elementtype==4: #volume elements
         linesplit=elearray[i].split()
         nodes=linesplit[-4:]
         elearray_out.append(str(eleindex)+" 23 "+nodes[0]+" "+nodes[1]+" "+nodes[2]+" "+nodes[3]+"\n")
+        indices_tet.append(eleindex)
         eleindex=eleindex+1
+    if elementtype==2: #triangle surface elements
+        linesplit=elearray[i].split()
+        nodes=linesplit[-3:]
+        elearray_out.append(str(eleindex)+" 129 "+nodes[0]+" "+nodes[1]+" "+nodes[2]+"\n")
+        indices_tri.append(eleindex)
+        eleindex=eleindex+1
+
 
 print("\033[93m"+str(len(elearray_out))+" elements created\033[00m")
 
 
 #############################################
 # Writing the output                        #
-############################################
-with open(outfile,'w') as f:
+#############################################
+with open(outfile+".nodes.aerosmsh",'w') as f:
     f.write("*\nNODES\n")
     f.writelines(nodearray)
     print("\033[93mNodes written\033[00m")
@@ -54,8 +65,12 @@ with open(outfile,'w') as f:
     f.writelines(elearray_out)
     print("\033[93mTOPOLOGY written\033[00m")
 
+with open(outfile+".attributes.aerosmsh","w") as f:
     f.write("*\nATTRIBUTES\n")
-    f.write("1 "+str(len(elearray_out))+" 1 1\n")
+    for index in indices_tet:
+      f.write(str(index)+" 1\n")
+    for index in indices_tri:
+      f.write(str(index)+" -1\n")
     print("\033[93mATTRIBUTES written\033[00m")
 
     f.write("*\nMATERIAL\n")
@@ -70,4 +85,4 @@ with open(outfile,'w') as f:
     # f.write("1 HyperElasticPlaneStress 1153.400000 608000000.000000 0.400000 0.000076\n")
     # print("\033[93mMATLAW written\033[00m")
 
-print("\033[92mAERO-S mesh file created: \033[00m"+outfile+"\n")
+print("\033[92mAERO-S mesh files created\033[00m")

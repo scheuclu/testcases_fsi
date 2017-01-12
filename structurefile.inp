@@ -1,5 +1,5 @@
 CONTROL
-"parachute"
+"structure_volume"
 1
 "nodeset"
 "elemset"
@@ -16,12 +16,14 @@ Matcher "./mesh/matcher/MATCHEROUTPUT.match.fem"
 ******LINEAR
 ***************************************************************************
 OUTPUT
-gdisplac "results/parachute.dis" 5000
-stressvm "results/parachute.stress.vm" 5000
+gdisplac "results/strucure_volume.dis" 5000
+stressvm "results/structure_volume.stress.vm" 5000
 ***************************************************************************
 RESTART
 "rst/rst_fem" 10000
 ***************************************************************************
-INCLUDE "./mesh/runmesh/structure_volume_alt.aerosmsh"
+INCLUDE "./mesh/runmesh/structure_volume_alt.nodes.aerosmsh"
+*
+INCLUDE "./mesh/runmesh/structure_volume_alt.attributes.aerosmsh"
 ***************************************************************************
 END

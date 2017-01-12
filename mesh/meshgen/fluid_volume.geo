@@ -45,10 +45,16 @@ Line Loop(2006)={linelist[]};
 Plane Surface(3001) = {2005,2006};
 
 surfaceextrude[]=Extrude {0, 0, -2.0} {
-  Surface{3001};
+  Surface{3001};Layers{1};
 };
 
 Physical Volume("FluidMesh")={surfaceextrude[1]};
 Physical Surface("InletFixedSurface")={surfaceextrude[2],surfaceextrude[3],surfaceextrude[4],surfaceextrude[5]};
 Physical Surface("SymmetrySurface")={3001,surfaceextrude[0]};
+
+slipmovingsurfacelist={};
+For j In {1:18}
+  slipmovingsurfacelist+={surfaceextrude[j+5]};
+EndFor
+Physical Surface("SlipMovingSurface") ={slipmovingsurfacelist[]};
 

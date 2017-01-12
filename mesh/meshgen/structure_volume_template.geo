@@ -11,7 +11,7 @@ linelist+={<numnodes>};
 Line Loop(<numnodes>) = linelist[];
 Plane Surface(1) = {<numnodes>};
 extsurf[]=Extrude {0, 0, <thickness>} {
-  Surface{1};
+  Surface{1}; Layers{1};
 };
 
 Physical Volume("Structure Volume") = {extsurf[1]};

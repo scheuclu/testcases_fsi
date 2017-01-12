@@ -55,6 +55,6 @@ sleep 2s
 clear
 
 #create a mesh-file suitable for aeros
-./gmsh2aeros.py ./premsh/structure_volume.msh ./runmesh/structure_volume_alt.aerosmsh
+./gmsh2aeros.py ./premsh/structure_volume.msh ./runmesh/structure_volume_alt
 printSuccess "structure_colume_alt mesh created"
 sleep 2s

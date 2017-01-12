@@ -29,7 +29,7 @@ linelist+={18};
 Line Loop(18) = linelist[];
 Plane Surface(1) = {18};
 extsurf[]=Extrude {0, 0, -2.0} {
-  Surface{1};
+  Surface{1}; Layers{1};
 };
 
 Physical Volume("Structure Volume") = {extsurf[1]};

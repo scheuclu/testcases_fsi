@@ -1,2 +1,2 @@
-INCLUDE "./mesh/runmesh/structure_volume.aerosmsh"
+INCLUDE "./mesh/runmesh/structure_volume_alt.nodes.aerosmsh"
 END
