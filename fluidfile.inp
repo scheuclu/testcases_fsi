@@ -18,6 +18,7 @@ under Output {
     Pressure = "Pressure.bin";
     Mach     = "Mach.bin";
     Velocity = "Velocity.bin";
+    Displacement = "Displacement.bin";
     LiftandDrag = "LiftandDrag.out";
     Frequency = 5000;
   }
@@ -81,7 +82,7 @@ under Space {
 
 under Time {
   Type   = Explicit;
-  MaxIts = 70000000; 
+  MaxIts = 7000; 
   CheckSolution = Off;
   CheckPressure = Off;
   CheckDensity = Off;

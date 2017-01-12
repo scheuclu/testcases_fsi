@@ -22,7 +22,7 @@ SOWER_EXECUTABLE=/home/pavery/bin/sower
 
 module load intel/intel-13 openmpi/openmpi161_intel13
 
-PBS_O_WORKDIR='/home/pavery/JPL/ShortCourseFSI-Sep2016/HandsOnSessions/FolderCases14To15/simulations/Case14'
+PBS_O_WORKDIR='/home/lscheuch/project/testcases_fsi'
 export PBS_O_WORKDIR
 
 ### ---------------------------------------
@@ -37,13 +37,14 @@ echo `cat $PBS_NODEFILE`
 cd $PBS_O_WORKDIR
 
 # Run coupled fluid-structure interaction simulation
-cmd="mpirun -np 120 $AEROF_EXECUTABLE FluidFile : -np 1 $AEROS_EXECUTABLE StructureFile"
+cmd="mpirun -np 12 $AEROF_EXECUTABLE fluidfile.inp : -np 1 $AEROS_EXECUTABLE structurefile.inp"
 
 $cmd >& $PBS_O_WORKDIR/log.out
 
 # Postprocess fluid solution
-$SOWER_EXECUTABLE -fluid -merge -con ../../data/OUTPUT.con -mesh ../../data/OUTPUT.msh -result results/Pressure.bin -output postpro/Pressure
-$SOWER_EXECUTABLE -fluid -merge -con ../../data/OUTPUT.con -mesh ../../data/OUTPUT.msh -result results/Mach.bin -output postpro/Mach
-$SOWER_EXECUTABLE -fluid -merge -con ../../data/OUTPUT.con -mesh ../../data/OUTPUT.msh -result results/Velocity.bin -output postpro/Velocity
+$SOWER_EXECUTABLE -fluid -merge -con ./mesh/sower/fluid_sowered.con -mesh ./mesh/sowered/fluid_sowered.msh -result results/Pressure.bin -output postpro/Pressure
+$SOWER_EXECUTABLE -fluid -merge -con ./mesh/sower/fluid_sowered.con -mesh ./mesh/sower/fluid_sowered.msh -result results/Mach.bin -output postpro/Mach
+$SOWER_EXECUTABLE -fluid -merge -con ./mesh/sower/fluid_sowered.con -mesh ./mesh/sower/fluid_sowered.msh -result results/Velocity.bin -output postpro/Velocity
+$SOWER_EXECUTABLE -fluid -merge -con ./mesh/sower/fluid_sowered.con -mesh ./mesh/sower/fluid_sowered.msh -result results/Displacement.bin -output postpro/Displacement
 
 sleep 60
