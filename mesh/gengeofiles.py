@@ -11,7 +11,7 @@ copyfile('meshgen/fluid_volume_template.geo','meshgen/fluid_volume.geo')
 stringmeshsize=""
 stringmsizefarfield="1.0"
 thickness="-0.01"  #default:-0.01
-size_farfield=6.0; #radius of the far-field
+size_farfield="6.0"; #radius of the far-field
 
 data=np.genfromtxt('meshgen/nacanodes.txt', dtype=None, delimiter=',', skip_header=0)
 

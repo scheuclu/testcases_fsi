@@ -15,7 +15,7 @@ clc
 % Profile offset
 % 0 offset means that the profile tip coincides with the cooridate systems
 % 0-point
-xo=0;
+xo=1;
 yo=0;
 zo=0;
 
@@ -74,7 +74,11 @@ z=x*0-0.01;
 
 %subtract the offset
 x=x-xo;
+xu=xu-xo;
+xl=xl-xo;
 yt=yt-yo;
+yu=yu-yo;
+yl=yl-yo;
 z=z-zo;
 
 
@@ -131,7 +135,7 @@ zl=z(2:end);
  
 points=[...
     xu'          yu'          z'
-    1            0            z(end) %making the profile indefinitly sharp
+    %1-xo            0            z(end) %making the profile indefinitly sharp
     flipud(xl') flipud(yl')  zl'];
 
 %% Output
