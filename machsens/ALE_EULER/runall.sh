@@ -3,7 +3,7 @@
 CURDIR=$(pwd)
 #echo $CURDIR
 
-find . -type d -name 'sim_*' | while read line; do
+find . -type d -name 'fdsim_*' | while read line; do
     echo $line
     cd $line
     qsub -q sandybridge ./run_steady.sh  >& consoleout &

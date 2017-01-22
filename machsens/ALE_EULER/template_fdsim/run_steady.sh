@@ -5,7 +5,7 @@
 #PBS -l nodes=1:ppn=12
 #PBS -l walltime=48:00:00
 
-CURRENT_DIR='<casepath>/sim_<index_mach>_<index_angle>_<index_perturb>'
+CURRENT_DIR='<casepath>/fdsim_<index_mach>_<index_angle>_<index_perturb>'
 
 function printSuccess() {
    RED='\033[1;31m'
@@ -27,9 +27,9 @@ cd $CURRENT_DIR
 cmd_plus="mpirun -np 12 $AEROF_EXEC fluidfile_steady_plus.inp : -np 1 $AEROS_EXEC structurefile_steady.inp"
 cmd_minus="mpirun -np 12 $AEROF_EXEC fluidfile_steady_minus.inp : -np 1 $AEROS_EXEC structurefile_steady.inp"
 
-$cmd_plus >& $CURRENT_DIR/log_steady_plus.log
+$cmd_plus >& ${CURRENT_DIR}/log_steady_plus.log
 
-$cmd_minus >& $CURRENT_DIR/log_steady_minus.log
+$cmd_minus >& ${CURRENT_DIR}/log_steady_minus.log
 
 printSuccess AEROF_ENDED
 

@@ -39,7 +39,7 @@ under SensitivityAnalysis {
   MatrixVectorProduct = Exact;
   AngleRadians = Off;
   SensitivityMesh = Off;
-  SensitivityMach = Off;
+  SensitivityMach = On;
   SensitivityFSI = On;
   under LinearSolver {
     Type = Gmres;

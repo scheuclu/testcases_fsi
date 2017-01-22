@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#PBS -N anasim_<index_mach>_<index_angle>_<index_perturb>_ALE_Euler
+#PBS -N anasim_<index_mach>_<index_angle>_ALE_Euler
 #PBS -M lscheuch@stanford.edu
 #PBS -l nodes=1:ppn=12
 #PBS -l walltime=48:00:00
@@ -27,9 +27,9 @@ cd $CURRENT_DIR
 cmd_direct="mpirun -np 12 $AEROF_EXEC fluidfile_sens_direct.inp : -np 1 $AEROS_EXEC structurefile_sens.inp"
 cmd_adjoint="mpirun -np 12 $AEROF_EXEC fluidfile_sens_adjoint.inp : -np 1 $AEROS_EXEC structurefile_sens.inp"
 
-$cmd_direct >& $CURRENT_DIR/log_sens_direct.log
+$cmd_direct >& ${CURRENT_DIR}/log_sens_direct.log
 
-$cmd_adjoint >& $CURRENT_DIR/log_sens_adjoint.log
+$cmd_adjoint >& ${CURRENT_DIR}/log_sens_adjoint.log
 
 printSuccess AEROF_ENDED
 
