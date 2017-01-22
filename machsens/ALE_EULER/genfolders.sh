@@ -85,14 +85,17 @@ do
       echo "angle: $curangle" >> fdsim_${index_mach}_${index_angle}_${index_perturb}/siminfo
 
       #replace angle of attach
-      plusangle=$(python -c "print $curangle+$i")
-      minusangle=$(python -c "print $curangle-$i")
-      sed -i "s/<alpha>/$plusangle/g" ./fdsim_${index_mach}_${index_angle}_${index_perturb}/fluidfile_steady_plus.inp
-      sed -i "s/<alpha>/$minusangle/g" ./fdsim_${index_mach}_${index_angle}_${index_perturb}/fluidfile_steady_minus.inp
+      sed -i "s/<alpha>/$curangle/g" ./fdsim_${index_mach}_${index_angle}_${index_perturb}/fluidfile_steady_plus.inp
+      sed -i "s/<alpha>/$curangle/g" ./fdsim_${index_mach}_${index_angle}_${index_perturb}/fluidfile_steady_minus.inp
 
+      plusmach=$(python -c "print $curmach+$i")
+      minusmach=$(python -c "print $curmach-$i")
+      #echo $plusmach
+      #echo $minusmach
+      #cat ./fdsim_${index_mach}_${index_angle}_${index_perturb}/fluidfile_steady_plus.inp
       #replace machnumber
-      sed -i "s/<machnumber>/$curmach/g" ./fdsim_${index_mach}_${index_angle}_${index_perturb}/fluidfile_steady_plus.inp
-      sed -i "s/<machnumber>/$curmach/g" ./fdsim_${index_mach}_${index_angle}_${index_perturb}/fluidfile_steady_minus.inp
+      sed -i "s/<machnumber>/$plusmach/g" ./fdsim_${index_mach}_${index_angle}_${index_perturb}/fluidfile_steady_plus.inp
+      sed -i "s/<machnumber>/$minusmach/g" ./fdsim_${index_mach}_${index_angle}_${index_perturb}/fluidfile_steady_minus.inp
 
       #replace simulation index and path in run-script
       sed -i "s/<index_mach>/$index_mach/g" ./fdsim_${index_mach}_${index_angle}_${index_perturb}/run_steady.sh

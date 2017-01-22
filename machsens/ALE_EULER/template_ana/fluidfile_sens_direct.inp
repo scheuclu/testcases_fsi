@@ -18,7 +18,7 @@ under Input {
 
 under Output {
   under Postpro {
-    LiftandDragSensitivity = "./results/LiftAndDragSensitivity_sens_direct.out";
+    LiftandDragSensitivity = "./results/LiftAndDragSensitivity_direct.out";
     //Frequency = 10000;
     //Length = 1.00;
     //Surface = 0.025;

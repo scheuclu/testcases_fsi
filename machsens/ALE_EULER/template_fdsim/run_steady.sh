@@ -15,8 +15,8 @@ function printSuccess() {
 
 module load openmpi/openmpi161_intel13
 
-#AEROF_EXEC=/home/lscheuch/codes/aero-f_build/bin/aerof.opt
-AEROF_EXEC=/home/pavery/bin/aerof.opt
+AEROF_EXEC=/home/lscheuch/codes/aero-f_build/bin/aerof.opt
+#AEROF_EXEC=/home/pavery/bin/aerof.opt
 AEROS_EXEC=/home/pavery/bin/aeros
 SOWER_EXEC=/home/mzahr/frg_codes/sower/bin/sower.Linux
 XP2EXO_EXEC=/home/pavery/bin/xp2exo

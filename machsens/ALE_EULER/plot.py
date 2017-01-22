@@ -4,30 +4,34 @@ import os as os
 import matplotlib.pyplot as plt
 import numpy as np
 
+print("\033[1;4;092mREADING INPUT-FILES                                                             \033[00m")
+
 machvalues=[]
 with open('scriptinput/machnumbers') as f:
   for line in f.readlines():
     machvalues.append(float(line))
+print("./scriptinput/machnumbers")
 
 anglevalues=[]
 with open('scriptinput/angles') as f:
   for line in f.readlines():
     anglevalues.append(float(line))
+print("./scriptinput/angles")
 
 #The following lines reads integer key-value pairs from a text file
 with open('info') as f:
   for line in f.readlines():
     exec(line.split()[0] + " = int(line.split()[1])")
+print("./info")
 
 #check if all neccessary information has been read from the info-file
 if 'NUMANGLES' in locals() and 'NUMPERTURB' in locals():
-  print('\x1b[0;37;42m' + 'Info-file is valid!' + '\x1b[0m')#green
-  #print('\x1b[0;37;44m' + 'Info-file is valid!' + '\x1b[0m')#blue
-  #print('\x1b[0;37;41m' + 'Info-file is valid!' + '\x1b[0m')#red
+  print('Info-file is valid!')
 else:
   print('\x1b[0;37;42m' + 'Info-file is invalid!' + '\x1b[0m')
   exit()
 
+print("\033[1;4;092mCREATING PLOTS                                                                 \033[00m")
 for index_mach in range(1,NUMMACH+1):
     for index_angle in range(1,NUMANGLES+1):
         epsfile='./results/Ma'+str(machvalues[index_mach-1])+'/angle'+str(anglevalues[index_angle-1])+".png"
@@ -48,13 +52,13 @@ for index_mach in range(1,NUMMACH+1):
         # f, (ax1, ax2) = plt.subplots(NUMSHAPEVARS, 2, sharey=False)
         f, (multiaxes) = plt.subplots(1, 2, sharey=False)
         f.set_size_inches(10,6)
-        plt.suptitle("Laminar-bodyfitted  \nangle="+str(anglevalues[index_angle-1])+"\nmach="+str(machvalues[index_mach-1]))
+        plt.suptitle("ALE_Euler  \nangle="+str(anglevalues[index_angle-1])+"\nmach="+str(machvalues[index_mach-1]))
         multiaxes[0].set_xlabel("step-size")
         multiaxes[1].set_xlabel("step-size")
         multiaxes[0].set_title("Sensitivity Lx")
         multiaxes[1].set_title("Sensitivity Ly")
 
-        data_sim = np.genfromtxt('./results/sim_'+str(index_mach)+'_'+str(index_angle)+'.csv', delimiter=',', skip_header=1,skip_footer=0, names=['stepsize', 'dLx', 'dLy'])
+        data_sim = np.genfromtxt('./results/fdsim_'+str(index_mach)+'_'+str(index_angle)+'.csv', delimiter=',', skip_header=1,skip_footer=0, names=['stepsize', 'dLx', 'dLy'])
 
         ################################################
         # Plots for Lx sensitivity                     #
@@ -90,3 +94,4 @@ for index_mach in range(1,NUMMACH+1):
 
         plt.savefig(epsfile, format='png', dpi=200)
         plt.close()
+print("\033[1;4;092m                                                                                \033[00m")
