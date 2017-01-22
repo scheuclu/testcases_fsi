@@ -1,0 +1,14 @@
+under Space {
+  under NavierStokes {
+    Flux              = Roe;
+    Reconstruction    = Constant;//Linear
+    AdvectiveOperator = FiniteVolume;
+    Limiter           = VanAlbada;
+    Gradient          = LeastSquares;
+    Beta              = 0.66666666667;
+    Gamma             = 1.0;
+  }
+  under Boundaries {
+    Type = StegerWarming;
+  }
+}

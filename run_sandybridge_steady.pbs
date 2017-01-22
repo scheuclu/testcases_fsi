@@ -35,8 +35,11 @@ rm results/*
 ######################################################
 # Run coupled fluid-structure interaction simulation #
 ######################################################
-cmd="mpirun -np 12 $AEROF_EXECUTABLE fluidfile_steady.inp : -np 1 $AEROS_EXECUTABLE structurefile_steady.inp"
-$cmd >& $PBS_O_WORKDIR/log_coupled_steady.out
+cmd_plus="mpirun -np 12 $AEROF_EXECUTABLE fluidfile_steady_plus.inp : -np 1 $AEROS_EXECUTABLE structurefile_steady.inp"
+$cmd_plus >& $PBS_O_WORKDIR/log_coupled_steady_plus.out
+
+cmd_minus="mpirun -np 12 $AEROF_EXECUTABLE fluidfile_steady_minus.inp : -np 1 $AEROS_EXECUTABLE structurefile_steady.inp"
+$cmd_minus >& $PBS_O_WORKDIR/log_coupled_steady_minus.out
 
 
 ######################################################

@@ -45,7 +45,7 @@ under SensitivityAnalysis {
     Type = Gmres;
     MaxIts = 6000;
     KrylovVectors = 2000;
-    Eps = 1.0e-6;
+    Eps = 1.0e-9;
     Output = "stdout";
     under Preconditioner { Type = Jacobi; Fill = 0; }
   }
@@ -54,7 +54,7 @@ under SensitivityAnalysis {
 
 under MeshMotion {
   Type = Basic;
-  Element = LinearFiniteElement;//changed
+  Element = BallVertexSprings;//changed
   Mode = Recursive;
   NumIncrements = 3;
   under Newton {

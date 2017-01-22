@@ -1,0 +1,33 @@
+under Time  {
+  Type = Implicit;
+  MaxIts = 1000;
+  Eps = 1.e-6;
+  //EpsAbs = 1.e-6;
+  Cfl0 = 1.0;
+  Cfl1 = 1.0;
+  Cfl2 = 5.0;
+  CflMax = 1.0e3;
+  Ser = 0.7;
+  CheckSolution=Off;
+  CheckVelocity=Off;
+  CheckPressure=Off;
+  CheckDensity=On;
+  under Implicit {
+    MatrixVectorProduct = FiniteDifference;
+    under Newton {
+      MaxIts = 9;
+      Eps = 1e-5;
+      under LinearSolver {
+        under NavierStokes {
+          Type = Gmres;
+          EpsFormula = Eisenstadt;
+          MaxIts = 500;
+          KrylovVectors = 80;
+          Eps = 1e-3;
+          //Output = "steadyout";
+          under Preconditioner { Type = Ras; Fill = 0; }
+        }
+      }
+    }
+  }
+}

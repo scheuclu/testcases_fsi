@@ -1,0 +1,8 @@
+under Surfaces {
+  under SurfaceData[8] {
+    //BoundaryConditionID = 0;
+    Nx = 0.0;
+    Ny = 0.0;
+    Nz = 1.0;
+  }
+}
