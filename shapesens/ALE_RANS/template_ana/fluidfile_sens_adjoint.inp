@@ -1,0 +1,71 @@
+under Problem {
+  Type   = SteadyAeroelasticSensitivityAnalysis;
+  Mode   = Dimensional;
+  //Prec   = NonPreconditioned;
+  Framework = BodyFitted;
+}
+
+under Input {
+  Prefix = "./";
+  Connectivity = "../../../mesh/sower/fluid_sowered.con";
+  Geometry = "../../../mesh/sower/fluid_sowered.msh";
+  Decomposition = "../../../mesh/sower/fluid_sowered.dec";
+  CpuMap = "../../../mesh/sower/fluid_sowered.12cpu";
+  //WallDistance = "./mesh/sower/fluid_sowered.dwall";
+  Matcher = "../../../mesh/sower/fluid_sowered.match";
+  //Solution = "./sol/fluid_coupled_steady.sol";
+}
+
+under Output {
+  under Postpro {
+    LiftandDragSensitivity = "./results/LiftAndDragSensitivity_adjoint.out";
+    //Frequency = 10000;
+    Length = 1.00;
+    Surface = 0.025;
+    XM = 0.0;
+    YM = 0.0;
+    ZM = 0.0;
+  }
+  //under Restart {
+    ////Frequency = 50000;
+    //Prefix   = "./sol/";
+    //Solution = "fluid_sens.sol";
+  //}
+}
+
+under SensitivityAnalysis {
+  Method = Adjoint;
+  SensitivityComputation = Analytical;
+  MatrixVectorProduct = Exact;
+  AngleRadians = Off;
+  SensitivityMesh = Off;
+  SensitivityMach = On;
+  SensitivityFSI = On;
+  under LinearSolver {
+    Type = Gmres;
+    MaxIts = 6000;
+    KrylovVectors = 2000;
+    Eps = 1.0e-9;
+    Output = "stdout";
+    under Preconditioner { Type = Jacobi; Fill = 0; }
+  }
+}
+
+//new
+under Aeroelastic {
+  InternalPressure = 30397.5;
+}
+
+sec_meshmotion
+
+sec_surfaces
+
+sec_equations
+
+sec_bc
+
+sec_space
+
+sec_referencestate
+
+sec_time_sens

@@ -1,0 +1,6 @@
+under ReferenceState {
+  Length = 1.0;
+  Mach = <machnumber>;
+  Reynolds = 1.0e7;
+  Temperature = 273.15;
+}

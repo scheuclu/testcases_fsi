@@ -1,0 +1,45 @@
+under Problem {
+  Type   = SteadyAeroelastic;
+  Mode   = Dimensional;
+  //Prec   = NonPreconditioned;
+  Framework = BodyFitted;
+}
+
+under Input {
+  Prefix = "./";
+  GeometryPrefix = "../../../mesh/sower/fluid_sowered";
+  Matcher = "../../../mesh/sower/fluid_sowered.match";
+  //Solution = "../../../sol/fluid_uncoupled_steady.sol";
+  //EmbeddedSurface = "./mesh/runmesh/fluidstructure_interface.top";
+}
+
+under Output {
+  under Postpro {
+    Prefix   = "results/";
+    Pressure = "Pressure_steady_plus.bin";
+    Mach     = "Mach_steady_plus.bin";
+    Velocity = "Velocity_steady_plus.bin";
+    Displacement = "Displacement_steady_plus.bin";
+    LiftandDrag = "LiftAndDrag_steady_plus.out";
+    Frequency = 10000;
+  }
+  //under Restart {
+  //  //Frequency = 50000;
+  //  Prefix   = "sol/";
+  //  Solution = "fluid_coupled_steady.sol";
+  //}
+}
+
+sec_meshmotion
+
+sec_surfaces
+
+sec_equations
+
+sec_bc
+
+sec_space
+
+sec_referencestate
+
+sec_time_steady

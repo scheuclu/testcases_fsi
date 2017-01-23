@@ -1,0 +1,128 @@
+# input node topology
+SDOUTPUT
+#
+varmode
+#
+DEFINE
+#
+x0 = -1.25
+x1 = -0.75
+x2 = -0.25
+x3 = 0.25
+#
+y0 = -0.08985675
+y1 = 0.08985675
+#
+z0 = -0.0125
+z1 = 0.0025
+#
+
+NODES
+#
+1   x0  y0  z0
+2   x1  y0  z0
+3   x2  y0  z0
+4   x3  y0  z0
+5   x0  y1  z0
+6   x1  y1  z0
+7   x2  y1  z0
+8   x3  y1  z0
+9   x0  y0  z1
+10   x1  y0  z1
+11   x2  y0  z1
+12   x3  y0  z1
+13   x0  y1  z1
+14   x1  y1  z1
+15   x2  y1  z1
+16   x3  y1  z1
+#
+
+EDGES
+#
+1   cubic    4    1 2 3 4
+2   cubic    4    5 6 7 8
+3   cubic    4     9 10 11 12
+4   cubic    4    13 14 15 16
+#
+5   linear    2    1  5
+6   linear    2    2  6
+7   linear    2    3  7
+8   linear    2    4  8
+9   linear    2    9  13
+10   linear    2    10  14
+11   linear    2    11  15
+12   linear    2    12  16
+#
+13   linear    2    1  9
+14   linear    2    2  10
+15   linear    2    3  11
+16   linear    2    4  12
+17   linear    2    5  13
+18   linear    2    6  14
+19   linear    2    7  15
+20   linear    2    8  16
+#
+
+PATCH
+#
+1   coons quad4  0 0   1 8 2 5
+2   coons quad4  0 0   3 12 4 9
+#
+3   coons quad4  0 0   1 16 3 13
+4   coons quad4  0 0   2 20 4 17
+#
+5   coons quad4  0 0   13 9 17 5
+6   coons quad4  0 0   16 12 20 8
+#
+
+VOLUME
+#
+1   coons brick8  1 1 1   5 6 3 4 1 2
+#
+
+DSGVAR
+#
+1    0  1  0
+9    0  1  0
+5    0  2  0
+13    0  2  0
+2    0  3  0
+10    0  3  0
+6    0  4  0
+14    0  4  0
+3    0  5  0
+11    0  5  0
+7    0  6  0
+15    0  6  0
+4    0  7  0
+12    0  7  0
+8    0  8  0
+16    0  8  0
+
+ABSVAR
+# Second column contains the shape variables!!!
+1     <perturb_abs1>  1.0   0.0  10.0
+2     <perturb_abs2>  1.0   0.0  10.0
+3     <perturb_abs3>  1.0   0.0  10.0
+4     <perturb_abs4>  1.0   0.0  10.0
+5     <perturb_abs5>  1.0   0.0  10.0
+6     <perturb_abs6>  1.0   0.0  10.0
+7     <perturb_abs7>  1.0   0.0  10.0
+8     <perturb_abs8>  1.0   0.0  10.0
+#
+
+LINK
+#
+1   SUM { VAR[1] }
+2   SUM { VAR[2] }
+3   SUM { VAR[3] }
+4   SUM { VAR[4] }
+5   SUM { VAR[5] }
+6   SUM { VAR[6] }
+7   SUM { VAR[7] }
+8   SUM { VAR[8] }
+#
+
+FEMESH "../../mesh/wall.nodeset"
+
+END
