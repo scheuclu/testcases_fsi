@@ -1,5 +1,5 @@
 under Equations {
-  Type = Euler;
+  Type = NavierStokes;
   under FluidModel[0] {
     Fluid = PerfectGas;
     under GasModel {
@@ -10,5 +10,15 @@ under Equations {
   under ThermalConductivityModel {
     Type = ConstantPrandtl;
     Prandtl = 0.72;
+  }
+  under ViscosityModel {
+    Type = Constant;
+    DynamicViscosity = 1.7054e-04;
+  }
+  under TurbulenceClosure {
+    Type = TurbulenceModel;
+    under TurbulenceModel {
+      Type = SpalartAllmaras;
+    }
   }
 }

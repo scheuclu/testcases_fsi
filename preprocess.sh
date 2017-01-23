@@ -25,6 +25,10 @@ rm ./mesh/runmesh/fluid_volume.top.dec.12
 $PARTNMESH_EXECUTABLE ./mesh/runmesh/fluid_volume.top 12
 printSuccess "Fluid mesh decomposed"
 
+## Create Distance to Wall file
+/home/pavery/bin/cd2tet -mesh ./mesh/runmesh/fluid_volume.top -output ./mesh/runmesh/fluid_volume
+printSuccess "Distance to wall file created"
+
 ## Run Matcher
 $MATCHER_EXECUTABLE ./mesh/runmesh/fluid_volume.top ./matcher.inp -output ./mesh/matcher/MATCHEROUTPUT
 printSuccess "Matcher completed"
@@ -56,7 +60,10 @@ cd ..
 
 ## Run Sower to pre-process the fluid mesh
 $SOWER_EXECUTABLE -fluid -mesh ./mesh/runmesh/fluid_volume.top -match ./mesh/matcher/MATCHEROUTPUT.match.fluid -dec ./mesh/runmesh/fluid_volume.top.dec.12 -cpu 12 -output ./mesh/sower/fluid_sowered
-printSuccess "Sower completed"
+printSuccess "Sower on .top-file completed"
+
+$SOWER_EXECUTABLE -fluid -fluid -split -mesh ./mesh/sower/fluid_sowered.msh -con ./mesh/sower/fluid_sowered.con -result ./mesh/runmesh/fluid_volume.dwall -ascii -output ./mesh/sower/fluid_sowered.dwall
+printSuccess "Sower on .dwall file completed"
 
 ## Create .exo-files from meshes
 $XP2EXO ./mesh/premsh/structure_fluid_interface.top ./mesh/exo/structure_fluid_interface.exo

@@ -23335,7 +23335,7 @@ Elements FluidMesh using FluidNodes
     19323  4      188     3072      187
     19324  4      187     3072     3071
     19325  4      186     3831      185
- Elements SlipMovingSurface using FluidNodes
+ Elements StickMovingSurface using FluidNodes
     19326  4      129        1      119
     19327  4      129      128        1
     19328  4      130      129      118

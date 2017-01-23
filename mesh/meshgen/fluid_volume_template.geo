@@ -38,5 +38,5 @@ slipmovingsurfacelist={};
 For j In {1:<numnodes>}
   slipmovingsurfacelist+={surfaceextrude[j+5]};
 EndFor
-Physical Surface("SlipMovingSurface") ={slipmovingsurfacelist[]};
+Physical Surface("StickMovingSurface") ={slipmovingsurfacelist[]};
 
