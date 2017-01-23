@@ -62,8 +62,8 @@ cd ..
 $SOWER_EXECUTABLE -fluid -mesh ./mesh/runmesh/fluid_volume.top -match ./mesh/matcher/MATCHEROUTPUT.match.fluid -dec ./mesh/runmesh/fluid_volume.top.dec.12 -cpu 12 -output ./mesh/sower/fluid_sowered
 printSuccess "Sower on .top-file completed"
 
-$SOWER_EXECUTABLE -fluid -fluid -split -mesh ./mesh/sower/fluid_sowered.msh -con ./mesh/sower/fluid_sowered.con -result ./mesh/runmesh/fluid_volume.dwall -ascii -output ./mesh/sower/fluid_sowered.dwall
-printSuccess "Sower on .dwall file completed"
+#$SOWER_EXECUTABLE -fluid -fluid -split -mesh ./mesh/sower/fluid_sowered.msh -con ./mesh/sower/fluid_sowered.con -result ./mesh/runmesh/fluid_volume.dwall -ascii -output ./mesh/sower/fluid_sowered.dwall
+#printSuccess "Sower on .dwall file completed"
 
 ## Create .exo-files from meshes
 $XP2EXO ./mesh/premsh/structure_fluid_interface.top ./mesh/exo/structure_fluid_interface.exo
