@@ -1,0 +1,14 @@
+under Equations {
+  Type = Euler;
+  under FluidModel[0] {
+    Fluid = PerfectGas;
+    under GasModel {
+      SpecificHeatRatio = 1.4;
+      IdealGasConstant = 287.1;
+    }
+  }
+  under ThermalConductivityModel {
+    Type = ConstantPrandtl;
+    Prandtl = 0.72;
+  }
+}
